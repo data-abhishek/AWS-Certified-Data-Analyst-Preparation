@@ -3,6 +3,7 @@ Types of Data:
   Structure Data: Structured data refers to data that is organized in a predefined format, making it easy to search, process, and analyze.
                   It is typically stored in tabular form with rows and columns, such as in relational databases, spreadsheets, or CSV files.
                   Each column represents a specific attribute or field, and each row corresponds to a record or entry.
+
   Un-Structured Data: Unstructured data refers to information that does not have a predefined format or organization, making it more complex
                       to store, process, and analyze compared to structured data. It can include text, multimedia content, and other formats
                       that lack a rigid schema.
