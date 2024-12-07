@@ -12,3 +12,28 @@ Types of Data:
                         some organizational properties such as tags or markers that make it easier to process than unstructured data. It serves as
                         a middle ground between structured and unstructured data.
 
+Properties of Data:
+  Volume: Social Media
+  Velocity: Sensor data fron Iot devices
+  Vareity: Structure data, Healthcare data, JSON logs.
+
+Data Warehouses: A centralized repository optimized for analysis where data from different sources is stored in a structured format, ey. Amazon Redshift, 
+                 google Bigquery, Microsoft Azure SQL Data Warehouse.
+
+Data Lake: A storage repository that holds vast amount of raw data in its native format, including structured, semi-structured, un-structured data.
+           e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
+
+ETL Pipelines:
+  Definition: ETL stands for extract, transform and load. It is a process used to move data from sources systems into a data Warehouse.
+  Extract: Retrieve raw data from sources systems which can be databases, CRMs, Flat files, API, etc.
+           Ensure data integrity during the extraction phase.
+
+Transform:
+  Definition: Convert the extracted data into a format suitable for the target data Warehouse.
+              Can involve various operations such as:
+                Data Cleaning, Data Enrichment, Format Changes, Aggregation on Computation, Handling Missing Values
+
+Load: 
+  Definition: Move the transformed data into the target data Warehouse or another data repository
+              Can be done in batches (all at once) or in a streaming manner.
+              Ensure that data maintains its integrity during the loading phase.
