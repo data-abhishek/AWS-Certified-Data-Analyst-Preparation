@@ -1,4 +1,42 @@
 # AWS-Certified-Data-Analyst-Preparation
 
+Types of Data:
 
+  Structure Data: Structured data refers to data that is organized in a predefined format, making it easy to search, process, and analyze.
+                  It is typically stored in tabular form with rows and columns, such as in relational databases, spreadsheets, or CSV files.
+                  Each column represents a specific attribute or field, and each row corresponds to a record or entry.
+
+  Un-Structured Data: Unstructured data refers to information that does not have a predefined format or organization, making it more complex
+                      to store, process, and analyze compared to structured data. It can include text, multimedia content, and other formats
+                      that lack a rigid schema.
+
+  Semi-Structured Data: Semi-structured data is a type of data that does not conform to the rigid structure of structured data but still includes
+                        some organizational properties such as tags or markers that make it easier to process than unstructured data. It serves as
+                        a middle ground between structured and unstructured data.
+
+Properties of Data:
+  Volume: Social Media
+  Velocity: Sensor data fron Iot devices
+  Vareity: Structure data, Healthcare data, JSON logs.
+
+Data Warehouses: A centralized repository optimized for analysis where data from different sources is stored in a structured format, ey. Amazon Redshift, 
+                 google Bigquery, Microsoft Azure SQL Data Warehouse.
+
+Data Lake: A storage repository that holds vast amount of raw data in its native format, including structured, semi-structured, un-structured data.
+           e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
+
+ETL Pipelines:
+  Definition: ETL stands for extract, transform and load. It is a process used to move data from sources systems into a data Warehouse.
+  Extract: Retrieve raw data from sources systems which can be databases, CRMs, Flat files, API, etc.
+           Ensure data integrity during the extraction phase.
+
+Transform:
+  Definition: Convert the extracted data into a format suitable for the target data Warehouse.
+              Can involve various operations such as:
+                Data Cleaning, Data Enrichment, Format Changes, Aggregation on Computation, Handling Missing Values
+
+Load: 
+  Definition: Move the transformed data into the target data Warehouse or another data repository
+              Can be done in batches (all at once) or in a streaming manner.
+              Ensure that data maintains its integrity during the loading phase.
 
