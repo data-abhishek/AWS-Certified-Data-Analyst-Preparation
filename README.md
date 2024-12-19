@@ -1,101 +1,108 @@
 # AWS-Certified-Data-Analyst-Preparation
 
-##Types of Data:
+## Types of Data:
 
-  ###Structure Data: Structured data refers to data that is organized in a predefined format, making it easy to search, process, and analyze.
-                  It is typically stored in tabular form with rows and columns, such as in relational databases, spreadsheets, or CSV files.
-                  Each column represents a specific attribute or field, and each row corresponds to a record or entry.
+  ### Structure Data:
+  Structured data refers to data that is organized in a predefined format, making it easy to search, process, and analyze.
+  It is typically stored in tabular form with rows and columns, such as in relational databases, spreadsheets, or CSV files.
+  Each column represents a specific attribute or field, and each row corresponds to a record or entry.
 
-  ###Un-Structured Data: Unstructured data refers to information that does not have a predefined format or organization, making it more complex
-                      to store, process, and analyze compared to structured data. It can include text, multimedia content, and other formats
-                      that lack a rigid schema.
+  ### Un-Structured Data:
+  Unstructured data refers to information that does not have a predefined format or organization, making it more complex
+  to store, process, and analyze compared to structured data. It can include text, multimedia content, and other formats
+  that lack a rigid schema.
 
-  ###Semi-Structured Data: Semi-structured data is a type of data that does not conform to the rigid structure of structured data but still includes
-                        some organizational properties such as tags or markers that make it easier to process than unstructured data. It serves as
-                        a middle ground between structured and unstructured data.
+  ### Semi-Structured Data:
+  Semi-structured data is a type of data that does not conform to the rigid structure of structured data but still includes
+  some organizational properties such as tags or markers that make it easier to process than unstructured data. It serves as
+  a middle ground between structured and unstructured data.
 
-##Properties of Data:
-  ###Volume: Social Media
-  ###Velocity: Sensor data fron Iot devices
-  ###Vareity: Structure data, Healthcare data, JSON logs.
+## Properties of Data:
+  ### Volume:
+  Social Media
+  ### Velocity:
+  Sensor data fron Iot devices
+  ### Vareity: 
+  Structure data, Healthcare data, JSON logs.
 
-##Data Warehouses: A centralized repository optimized for analysis where data from different sources is stored in a structured format, ey. Amazon Redshift, 
-                 google Bigquery, Microsoft Azure SQL Data Warehouse.
+## Data Warehouses:
+A centralized repository optimized for analysis where data from different sources is stored in a structured format, ey. Amazon Redshift, 
+google Bigquery, Microsoft Azure SQL Data Warehouse.
 
-##Data Lake: A storage repository that holds vast amount of raw data in its native format, including structured, semi-structured, un-structured data.
-           e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
+## Data Lake:
+A storage repository that holds vast amount of raw data in its native format, including structured, semi-structured, un-structured data.
+e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
 
-##ETL Pipelines:
-  ###Definition: ETL stands for extract, transform and load. It is a process used to move data from sources systems into a data Warehouse.
-  ###Extract: Retrieve raw data from sources systems which can be databases, CRMs, Flat files, API, etc.
-           Ensure data integrity during the extraction phase.
+## ETL Pipelines:
+  ###Definition:
+  ETL stands for extract, transform and load. It is a process used to move data from sources systems into a data Warehouse.
+  ### Extract:
+  Retrieve raw data from sources systems which can be databases, CRMs, Flat files, API, etc.Ensure data integrity during the extraction phase.
 
-##Transform:
-  ###Definition: Convert the extracted data into a format suitable for the target data Warehouse.
-              Can involve various operations such as:
-                Data Cleaning, Data Enrichment, Format Changes, Aggregation on Computation, Handling Missing Values
+## Transform:
+  ### Definition:
+  Convert the extracted data into a format suitable for the target data Warehouse. Can involve various operations such as: Data Cleaning, Data Enrichment, Format Changes, Aggregation on Computation, Handling       Missing Values
 
-##Load: 
-  ###Definition: Move the transformed data into the target data Warehouse or another data repository
-              Can be done in batches (all at once) or in a streaming manner.
-              Ensure that data maintains its integrity during the loading phase.
+## Load: 
+  ###Definition:
+  Move the transformed data into the target data Warehouse or another data repository can be done in batches (all at once) or in a streaming manner. Ensure that data maintains its integrity during the loading      phase.
 
-##Data Validation and Profiling:
-  ###Completeness:
-    Definition: Ensures all required data is present and no essential parts are missing.
-    Checks: Missing values, null counts, percentage of populated fields.
-    Importance: Missing data can lead to inaccurate analyses and insights.
+## Data Validation and Profiling:
+  ### Completeness:
+  Definition: Ensures all required data is present and no essential parts are missing.
+  Checks: Missing values, null counts, percentage of populated fields.
+  Importance: Missing data can lead to inaccurate analyses and insights.
 
-  ###Consistency:
-    Definition: Ensures data values are consistent across datasets and do not contradict each other.
-    Checks: Cross-field validation, comparing data from different sources or periods.
-    Importance: Inconsistent data can cause confusion and result in incorrect conclusions.
+  ### Consistency:
+  Definition: Ensures data values are consistent across datasets and do not contradict each other.
+  Checks: Cross-field validation, comparing data from different sources or periods.
+  Importance: Inconsistent data can cause confusion and result in incorrect conclusions.
   
-  ###Accuracy
-    Definition: Ensures data is correct, reliable, and represents what it is supposed to.
-    Checks: Comparing with trusted sources, validation against known standards or rules.
-    Importance: Inaccurate data can lead to false insights and poor decision-making.
+  ### Accuracy
+  Definition: Ensures data is correct, reliable, and represents what it is supposed to.
+  Checks: Comparing with trusted sources, validation against known standards or rules.
+  Importance: Inaccurate data can lead to false insights and poor decision-making.
 
-  ###Integrity
-    Definition: Ensures data maintains its correctness and consistency over its lifecycle and across systems.
-    Checks: Referential integrity (e.g., foreign key checks in databases), relationship validations.
-    Importance: Ensures relationships between data elements preserved, and data remains trustworthy.
+  ### Integrity
+  Definition: Ensures data maintains its correctness and consistency over its lifecycle and across systems.
+  Checks: Referential integrity (e.g., foreign key checks in databases), relationship validations.
+  Importance: Ensures relationships between data elements preserved, and data remains trustworthy.
 
-##Aggregation:
-  ###COUNT:
+## Aggregation:
+  ### COUNT:
   ```SQL
     SELECT COUNT(*) AS total rows FROM employees;
-  ###SUM:
+  SUM:
     SELECT SUM (salary) AS total salary FROM employees;
-  ###AVG:
+  AVG:
     SELECT AVG(salary) AS average salary FROM employees;
-  ###MAX/MIN:
+  MAX/MIN:
     SELECT MAX(salary) AS highest salary FROM employees;
 
-##Aggregate with CASE:
+Aggregate with CASE:
   WHERE clauses are specified after aggregation, so you can only filter on one thing at a time.
     SELECT COUNT(*) AS high_salary_count FROM employees WHERE salary > 70000;
     
-  ##One way to apply multiple filters to what you're aggregating:
+  One way to apply multiple filters to what you're aggregating:
     SELECT COUNT (CASE WHEN salary > 70000 THEN 1 END) AS high salary_count,
     COUNT (CASE WHEN salary BETWEEN 50000 AND 70000 THEN 1 END) AS medium_salary_count,
     COUNT (CASE WHEN salary < 50000 THEN 1 END) AS low salary_count FROM employees;
 
-##Grouping
+Grouping
 
   Query:
 
     SELECT department_id, COUNT(*) AS number_of_employees FROM employees 
     WHERE join date> '2020-01-01' GROUP BY department_id;
     
-##Nested grouping, sorting:
+Nested grouping, sorting:
 
   Query:
   
     SELECT YEAR(sale_date) AS sale_year, product_id, SUM(amount) AS total sales FROM sales
     GROUP BY sale_year, product_id ORDER BY sale_year, total_sales DESC;
 
-##SQL Regular Expressions
+SQL Regular Expressions
 
   ###Pattern matching:
 
@@ -107,7 +114,7 @@
 
     !~* would mean "not match expression, case insensitive"
 
-  ###Regular expression 101
+  Regular expression 101
 
     - match a pattern at the start of a string
 
@@ -119,7 +126,7 @@
 
     Repeats ([a-z]{4} matches any four-letter lowercase word)
 
-  ###Special metacharacters
+  Special metacharacters
 
     \d-any digit, \wany letter, digit, or underscore, is-whitespace, it-tab
 
