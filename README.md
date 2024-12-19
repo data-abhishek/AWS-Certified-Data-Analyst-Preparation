@@ -135,6 +135,47 @@ e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
 
       Selects any rows where the name starts with "fire" or "ice" (case insensitive)
 
+## Storage:
+### S3 Use Cases:
+- Backup & Storages
+- Backup Recovery
+- Archive
+- Hybrid Cloud Storage
+- Application Hosting
+- Media Hosting
+- Data Lakes & Big Data Analytics
+- Software Delivery
+- Static Website
 
-  
+### Amazon S3-Objects:
+- Objects values are the content of the body:
+  Maximum object size is 5 TB (5000 GB)
+- If uploading more than 5 GB, must use multi-part upload.
+## Amazon S3-Security
+### User Based:
+- IAM Policies: Which API calls should be allowed for a specific user from IAM.
+### Resource Based:
+- Bucket Policies: Bucket wide rules from the S3 console allows crsoss amount.
+- Object Access Control List(ACL): Finer gain
+- Bucket Access Control List(ACL): Less common
+### Note:
+an IAM principal can access an S3 object if:
+  - The user IAM permissions Allow it OR the rsources policy Allows.
+  - AND there is no explicit DENY.
 
+### Versioning-Amazon S3:
+- You can version your file Amazon S3.
+- It is enabled at the bucket level.
+- Same key overwrite will change the version: 1, 2, 3,...
+### Replication-Amazon S3
+- Must enable versioning in source and destination buckets.
+- Cross Region Replication (CRR)
+- Same Region Replication (SRR)
+- Buckets can be in different AWS accounts.
+- Copying is Asynchronous.
+- Must give proper IAM permission to S3.
+- Use cases:
+  #### CRR:
+  Compliance, lower latency, access, replicatiion accross accounts.
+  #### SRR :
+  log aggregation, live replication between production and test accounts.
