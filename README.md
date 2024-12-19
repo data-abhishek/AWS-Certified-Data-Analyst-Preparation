@@ -34,7 +34,7 @@ A storage repository that holds vast amount of raw data in its native format, in
 e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
 
 ## ETL Pipelines:
-  ###Definition:
+  ### Definition:
   ETL stands for extract, transform and load. It is a process used to move data from sources systems into a data Warehouse.
   ### Extract:
   Retrieve raw data from sources systems which can be databases, CRMs, Flat files, API, etc.Ensure data integrity during the extraction phase.
@@ -44,7 +44,7 @@ e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
   Convert the extracted data into a format suitable for the target data Warehouse. Can involve various operations such as: Data Cleaning, Data Enrichment, Format Changes, Aggregation on Computation, Handling       Missing Values
 
 ## Load: 
-  ###Definition:
+  ### Definition:
   Move the transformed data into the target data Warehouse or another data repository can be done in batches (all at once) or in a streaming manner. Ensure that data maintains its integrity during the loading      phase.
 
 ## Data Validation and Profiling:
@@ -70,16 +70,15 @@ e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
 
 ## Aggregation:
   ### COUNT:
-  ```SQL
-    SELECT COUNT(*) AS total rows FROM employees;
-  SUM:
+        SELECT COUNT(*) AS total rows FROM employees;
+  ### SUM:
     SELECT SUM (salary) AS total salary FROM employees;
-  AVG:
+ ### AVG:
     SELECT AVG(salary) AS average salary FROM employees;
-  MAX/MIN:
+### MAX/MIN:
     SELECT MAX(salary) AS highest salary FROM employees;
 
-Aggregate with CASE:
+### Aggregate with CASE:
   WHERE clauses are specified after aggregation, so you can only filter on one thing at a time.
     SELECT COUNT(*) AS high_salary_count FROM employees WHERE salary > 70000;
     
@@ -88,23 +87,23 @@ Aggregate with CASE:
     COUNT (CASE WHEN salary BETWEEN 50000 AND 70000 THEN 1 END) AS medium_salary_count,
     COUNT (CASE WHEN salary < 50000 THEN 1 END) AS low salary_count FROM employees;
 
-Grouping
+### Grouping
 
   Query:
 
     SELECT department_id, COUNT(*) AS number_of_employees FROM employees 
     WHERE join date> '2020-01-01' GROUP BY department_id;
     
-Nested grouping, sorting:
+### Nested grouping, sorting:
 
   Query:
   
     SELECT YEAR(sale_date) AS sale_year, product_id, SUM(amount) AS total sales FROM sales
     GROUP BY sale_year, product_id ORDER BY sale_year, total_sales DESC;
 
-SQL Regular Expressions
+## SQL Regular Expressions
 
-  ###Pattern matching:
+  ### Pattern matching:
 
     Think a much more powerful "LIKE"
 
@@ -114,7 +113,7 @@ SQL Regular Expressions
 
     !~* would mean "not match expression, case insensitive"
 
-  Regular expression 101
+  ### Regular expression:
 
     - match a pattern at the start of a string
 
@@ -126,7 +125,7 @@ SQL Regular Expressions
 
     Repeats ([a-z]{4} matches any four-letter lowercase word)
 
-  Special metacharacters
+  ### Special metacharacters
 
     \d-any digit, \wany letter, digit, or underscore, is-whitespace, it-tab
 
