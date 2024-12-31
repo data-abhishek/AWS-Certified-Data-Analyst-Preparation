@@ -179,3 +179,4 @@ an IAM principal can access an S3 object if:
   Compliance, lower latency, access, replicatiion accross accounts.
   #### SRR :
   log aggregation, live replication between production and test accounts.
+## Storage Class
