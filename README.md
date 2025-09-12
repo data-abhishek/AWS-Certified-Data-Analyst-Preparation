@@ -1,182 +1,179 @@
-# AWS-Certified-Data-Analyst-Preparation
+# Develop Generative AI Apps in Azure
 
-## Types of Data:
+![Azure AI Overview](https://learn.microsoft.com/en-us/azure/media/ai-services-overview.png)
+*Figure: Overview of Azure AI services and platforms*
 
-  ### Structure Data:
-  Structured data refers to data that is organized in a predefined format, making it easy to search, process, and analyze.
-  It is typically stored in tabular form with rows and columns, such as in relational databases, spreadsheets, or CSV files.
-  Each column represents a specific attribute or field, and each row corresponds to a record or entry.
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Azure AI Services](#azure-ai-services)
+3. [Azure AI Foundry](#azure-ai-foundry)
+4. [Azure AI Foundry Projects](#azure-ai-foundry-projects)
+5. [Responsible AI](#responsible-ai)
 
-  ### Un-Structured Data:
-  Unstructured data refers to information that does not have a predefined format or organization, making it more complex
-  to store, process, and analyze compared to structured data. It can include text, multimedia content, and other formats
-  that lack a rigid schema.
+## Introduction
 
-  ### Semi-Structured Data:
-  Semi-structured data is a type of data that does not conform to the rigid structure of structured data but still includes
-  some organizational properties such as tags or markers that make it easier to process than unstructured data. It serves as
-  a middle ground between structured and unstructured data.
+The growth in the use of artificial intelligence (AI) in general, and *generative* AI in particular means that developers are increasingly required to create comprehensive AI solutions. These solutions need to combine machine learning models, AI services, prompt engineering solutions, and custom code.
 
-## Properties of Data:
-  ### Volume:
-  Social Media
-  ### Velocity:
-  Sensor data fron Iot devices
-  ### Vareity: 
-  Structure data, Healthcare data, JSON logs.
+Microsoft Azure provides multiple services that you can use to create AI solutions. However, before embarking on an AI application development project, it's useful to consider the available options for services, tools, and frameworks as well as some principles and practices that can help you succeed.
 
-## Data Warehouses:
-A centralized repository optimized for analysis where data from different sources is stored in a structured format, ey. Amazon Redshift, 
-google Bigquery, Microsoft Azure SQL Data Warehouse.
+This module explores some of the key considerations for planning an AI development project, and introduces **Azure AI Foundry**; a comprehensive platform for AI development on Microsoft Azure.
 
-## Data Lake:
-A storage repository that holds vast amount of raw data in its native format, including structured, semi-structured, un-structured data.
-e.g. Amazon S3, Azure Data Lake, Hadoop Distributed File System.
+## Azure AI Services
 
-## ETL Pipelines:
-  ### Definition:
-  ETL stands for extract, transform and load. It is a process used to move data from sources systems into a data Warehouse.
-  ### Extract:
-  Retrieve raw data from sources systems which can be databases, CRMs, Flat files, API, etc.Ensure data integrity during the extraction phase.
+![Azure AI Services Architecture](https://learn.microsoft.com/en-us/azure/media/ai-services-architecture.png)
+*Diagram: High-level architecture of Azure AI services*
 
-## Transform:
-  ### Definition:
-  Convert the extracted data into a format suitable for the target data Warehouse. Can involve various operations such as: Data Cleaning, Data Enrichment, Format Changes, Aggregation on Computation, Handling       Missing Values
+Microsoft Azure provides a wide range of cloud services that you can use to develop, deploy, and manage an AI solution. The most obvious starting point for considering AI development on Azure is Azure AI services; a set of out-of-the-box prebuilt APIs and models that you can integrate into your applications. The following table lists some commonly used Azure AI services (for a full list of all available Azure AI services, see Available Azure AI services).
 
-## Load: 
-  ### Definition:
-  Move the transformed data into the target data Warehouse or another data repository can be done in batches (all at once) or in a streaming manner. Ensure that data maintains its integrity during the loading      phase.
+| Service | Description |
+|---------|-------------|
+| **Azure OpenAI** | Azure OpenAI in Foundry Models provides access to OpenAI generative AI models including the GPT family of large and small language models and DALL-E image-generation models within a scalable and securable cloud service on Azure. |
+| **Azure AI Vision** | The Azure AI Vision service provides a set of models and APIs that you can use to implement common computer vision functionality in an application. With the AI Vision service, you can detect common objects in images, generate captions, descriptions, and tags based on image contents, and read text in images. |
+| **Azure AI Speech** | The Azure AI Speech service provides APIs that you can use to implement *text to speech* and *speech to text* transformation, as well as specialized speech-based capabilities like speaker recognition and translation. |
+| **Azure AI Language** | The Azure AI Language service provides models and APIs that you can use to analyze natural language text and perform tasks such as entity extraction, sentiment analysis, and summarization. The AI Language service also provides functionality to help you build conversational language models and question answering solutions. |
+| **Azure AI Foundry Content Safety** | Azure AI Foundry Content Safety provides developers with access to advanced algorithms for processing images and text and flagging content that is potentially offensive, risky, or otherwise undesirable. |
+| **Azure AI Translator** | The Azure AI Translator service uses state-of-the-art language models to translate text between a large number of languages. |
+| **Azure AI Face** | The Azure AI Face service is a specialist computer vision implementation that can detect, analyze, and recognize human faces. Because of the potential risks associated with personal identification and misuse of this capability, access to some features of the AI Face service are restricted to approved customers. |
+| **Azure AI Custom Vision** | The Azure AI Custom Vision service enables you to train and use custom computer vision models for image classification and object detection. |
+| **Azure AI Document Intelligence** | With Azure AI Document Intelligence, you can use pre-built or custom models to extract fields from complex documents such as invoices, receipts, and forms. |
+| **Azure AI Content Understanding** | The Azure AI Content Understanding service provides multi-modal content analysis capabilities that enable you to build models to extract data from forms and documents, images, videos, and audio streams. |
+| **Azure AI Search** | The Azure AI Search service uses a pipeline of AI skills based on other Azure AI Services and custom code to extract information from content and create a searchable index. AI Search is commonly used to create vector indexes for data that can then be used to *ground* prompts submitted to generative AI language models, such as those provided in Azure OpenAI. |
 
-## Data Validation and Profiling:
-  ### Completeness:
-  Definition: Ensures all required data is present and no essential parts are missing.
-  Checks: Missing values, null counts, percentage of populated fields.
-  Importance: Missing data can lead to inaccurate analyses and insights.
+## Azure AI Foundry
 
-  ### Consistency:
-  Definition: Ensures data values are consistent across datasets and do not contradict each other.
-  Checks: Cross-field validation, comparing data from different sources or periods.
-  Importance: Inconsistent data can cause confusion and result in incorrect conclusions.
-  
-  ### Accuracy
-  Definition: Ensures data is correct, reliable, and represents what it is supposed to.
-  Checks: Comparing with trusted sources, validation against known standards or rules.
-  Importance: Inaccurate data can lead to false insights and poor decision-making.
+Azure AI Foundry is a platform for AI development on Microsoft Azure. While you *can* provision individual Azure AI services resources and build applications that consume them without it, the project organization, resource management, and AI development capabilities of Azure AI Foundry makes it the recommended way to build all but the most simple solutions.
 
-  ### Integrity
-  Definition: Ensures data maintains its correctness and consistency over its lifecycle and across systems.
-  Checks: Referential integrity (e.g., foreign key checks in databases), relationship validations.
-  Importance: Ensures relationships between data elements preserved, and data remains trustworthy.
+Azure AI Foundry provides the *Azure AI Foundry portal*, a web-based visual interface for working with AI projects. It also provides the *Azure AI Foundry SDK*, which you can use to build AI solutions programmatically.
 
-## Aggregation:
-  ### COUNT:
-        SELECT COUNT(*) AS total rows FROM employees;
-  ### SUM:
-    SELECT SUM (salary) AS total salary FROM employees;
- ### AVG:
-    SELECT AVG(salary) AS average salary FROM employees;
-### MAX/MIN:
-    SELECT MAX(salary) AS highest salary FROM employees;
+![Azure AI Foundry Platform Diagram](https://learn.microsoft.com/en-us/azure/media/ai-foundry-platform-diagram.png)
+*Diagram: Azure AI Foundry platform components*
 
-### Aggregate with CASE:
-  WHERE clauses are specified after aggregation, so you can only filter on one thing at a time.
-    SELECT COUNT(*) AS high_salary_count FROM employees WHERE salary > 70000;
-    
-  One way to apply multiple filters to what you're aggregating:
-    SELECT COUNT (CASE WHEN salary > 70000 THEN 1 END) AS high salary_count,
-    COUNT (CASE WHEN salary BETWEEN 50000 AND 70000 THEN 1 END) AS medium_salary_count,
-    COUNT (CASE WHEN salary < 50000 THEN 1 END) AS low salary_count FROM employees;
+### Key Features of Azure AI Foundry
 
-### Grouping
+![Azure AI Foundry Portal Features](https://learn.microsoft.com/en-us/azure/media/ai-foundry-portal-features.png)
+*Diagram: Features of the Azure AI Foundry portal*
 
-  Query:
+**Azure AI Foundry Portal**
+The Azure AI Foundry portal provides a comprehensive web-based interface for managing AI projects, deploying models, and building AI applications. The portal includes:
+- Project management and collaboration tools
+- Model deployment and testing capabilities
+- Built-in playgrounds for experimenting with AI models
+- Resource management and monitoring tools
 
-    SELECT department_id, COUNT(*) AS number_of_employees FROM employees 
-    WHERE join date> '2020-01-01' GROUP BY department_id;
-    
-### Nested grouping, sorting:
+**Azure AI Foundry SDK**
+The SDK enables programmatic access to Azure AI Foundry capabilities, allowing developers to:
+- Build AI solutions using code
+- Integrate AI capabilities into existing applications
+- Automate deployment and management processes
+- Create custom AI workflows and pipelines
 
-  Query:
-  
-    SELECT YEAR(sale_date) AS sale_year, product_id, SUM(amount) AS total sales FROM sales
-    GROUP BY sale_year, product_id ORDER BY sale_year, total_sales DESC;
+## Azure AI Foundry Projects
 
-## SQL Regular Expressions
+![Foundry vs Hub-based Projects Diagram](https://learn.microsoft.com/en-us/azure/media/foundry-vs-hub-diagram.png)
+*Diagram: Comparison of Foundry and Hub-based project structures*
 
-  ### Pattern matching:
+In Azure AI Foundry, you manage the resource connections, data, code, and other elements of the AI solution in *projects*. There are two kinds of project:
 
-    Think a much more powerful "LIKE"
+### Foundry Projects
 
-    - is the regular expression operator
+*Foundry projects* are associated with an **Azure AI Foundry** resource in an Azure subscription. Foundry projects provide support for Azure AI Foundry models (including OpenAI models), Azure AI Foundry Agent Service, Azure AI services, and tools for evaluation and responsible AI development.
 
-    -* is case-insensitive
+An Azure AI Foundry resource supports the most common AI development tasks to develop generative AI chat apps and agents. In most cases, using a Foundry project provides the right level of resource centralization and capabilities with a minimal amount of administrative resource management. You can use Azure AI Foundry portal to work in projects that are based in Azure AI Foundry resources, making it easy to add connected resources and manage model and agent deployments.
 
-    !~* would mean "not match expression, case insensitive"
+**Key Features of Foundry Projects:**
+- Access to Azure OpenAI models and other AI Foundry models
+- Integration with Azure AI Foundry Agent Service
+- Built-in evaluation and responsible AI tools
+- Simplified resource management
+- Streamlined deployment processes
 
-  ### Regular expression:
+### Hub-based Projects
 
-    - match a pattern at the start of a string
+*Hub-based projects* are associated with an **Azure AI hub** resource in an Azure subscription. Hub-based projects include an Azure AI Foundry resource, as well as managed compute, support for Prompt Flow development, and connected **Azure storage** and **Azure key vault** resources for secure data storage.
 
-    $match a pattern at the end bookat of a string (boo$ would match boo but not
+Azure AI hub resources support advanced AI development scenarios, like developing Prompt Flow based applications or fine-tuning models. You can also use Azure AI hub resources in both Azure AI Foundry portal and Azure Machine learning portal, making it easier to work on collaborative projects that involve data scientists and machine learning specialists as well as developers and AI software engineers.
 
-    |-alternate characters (sit/sat matches both sit and sat)
+**Key Features of Hub-based Projects:**
+- Advanced AI development capabilities
+- Prompt Flow development support
+- Model fine-tuning capabilities
+- Managed compute resources
+- Secure data storage with Azure Storage and Key Vault
+- Integration with Azure Machine Learning
+- Support for collaborative development teams
 
-    Ranges ([a-z] matches any lower case letter)
+### Choosing the Right Project Type
 
-    Repeats ([a-z]{4} matches any four-letter lowercase word)
+**Choose Foundry Projects when:**
+- Building generative AI chat applications or agents
+- Working on straightforward AI development tasks
+- Preferring minimal administrative overhead
+- Focusing on Azure OpenAI models and standard AI services
 
-  ### Special metacharacters
+**Choose Hub-based Projects when:**
+- Developing complex AI solutions requiring custom workflows
+- Need for Prompt Flow development
+- Requiring model fine-tuning capabilities
+- Working with collaborative teams including data scientists
+- Need advanced compute and storage management
+- Building enterprise-grade AI applications with enhanced security
 
-    \d-any digit, \wany letter, digit, or underscore, is-whitespace, it-tab
+## Responsible AI
 
-    Example:
+![Responsible AI Principles Diagram](https://learn.microsoft.com/en-us/azure/media/responsible-ai-diagram.png)
+*Diagram: Microsoft Responsible AI principles*
 
-      SELECT FROM name WHERE name ^(firelice)';
+It's important for software engineers to consider the impact of their software on users, and society in general; including considerations for its responsible use. When the application is imbued with artificial intelligence, these considerations are particularly important due to the nature of how AI systems work and inform decisions; often based on probabilistic models, which are in turn dependent on the data with which they were trained.
 
-      Selects any rows where the name starts with "fire" or "ice" (case insensitive)
+The human-like nature of AI solutions is a significant benefit in making applications user-friendly, but it can also lead users to place a great deal of trust in the application's ability to make correct decisions. The potential for harm to individuals or groups through incorrect predictions or misuse of AI capabilities is a major concern, and software engineers building AI-enabled solutions should apply due consideration to mitigate risks and ensure fairness, reliability, and adequate protection from harm or discrimination.
 
-## Storage:
-### S3 Use Cases:
-- Backup & Storages
-- Backup Recovery
-- Archive
-- Hybrid Cloud Storage
-- Application Hosting
-- Media Hosting
-- Data Lakes & Big Data Analytics
-- Software Delivery
-- Static Website
+Let's discuss some core principles for responsible AI that have been adopted at Microsoft.
 
-### Amazon S3-Objects:
-- Objects values are the content of the body:
-  Maximum object size is 5 TB (5000 GB)
-- If uploading more than 5 GB, must use multi-part upload.
-## Amazon S3-Security
-### User Based:
-- IAM Policies: Which API calls should be allowed for a specific user from IAM.
-### Resource Based:
-- Bucket Policies: Bucket wide rules from the S3 console allows crsoss amount.
-- Object Access Control List(ACL): Finer gain
-- Bucket Access Control List(ACL): Less common
-### Note:
-an IAM principal can access an S3 object if:
-  - The user IAM permissions Allow it OR the rsources policy Allows.
-  - AND there is no explicit DENY.
+### Fairness
 
-### Versioning-Amazon S3:
-- You can version your file Amazon S3.
-- It is enabled at the bucket level.
-- Same key overwrite will change the version: 1, 2, 3,...
-### Replication-Amazon S3
-- Must enable versioning in source and destination buckets.
-- Cross Region Replication (CRR)
-- Same Region Replication (SRR)
-- Buckets can be in different AWS accounts.
-- Copying is Asynchronous.
-- Must give proper IAM permission to S3.
-- Use cases:
-  #### CRR:
-  Compliance, lower latency, access, replicatiion accross accounts.
-  #### SRR :
-  log aggregation, live replication between production and test accounts.
-## Storage Class
+AI systems should treat all people fairly. For example, suppose you create a machine learning model to support a loan approval application for a bank. The model should make predictions of whether or not the loan should be approved without incorporating any bias based on gender, ethnicity, or other factors that might result in an unfair advantage or disadvantage to specific groups of applicants.
+
+Fairness of machine learned systems is a highly active area of ongoing research, and some software solutions exist for evaluating, quantifying, and mitigating unfairness in machine learned models. However, tooling alone isn't sufficient to ensure fairness. Consider fairness from the beginning of the application development process; carefully reviewing training data to ensure it's representative of all potentially affected subjects, and evaluating predictive performance for subsections of your user population throughout the development lifecycle.
+
+### Reliability and Safety
+
+AI systems should perform reliably and safely. For example, consider an AI-based software system for an autonomous vehicle; or a machine learning model that diagnoses patient symptoms and recommends prescriptions. Unreliability in these kinds of system can result in substantial risk to human life.
+
+As with any software, AI-based software application development must be subjected to rigorous testing and deployment management processes to ensure that they work as expected before release. Additionally, software engineers need to take into account the probabilistic nature of machine learning models, and apply appropriate thresholds when evaluating confidence scores for predictions.
+
+### Privacy and Security
+
+AI systems should be secure and respect privacy. The machine learning models on which AI systems are based rely on large volumes of data, which may contain personal details that must be kept private. Even after models are trained and the system is in production, they use new data to make predictions or take action that may be subject to privacy or security concerns; so appropriate safeguards to protect data and customer content must be implemented.
+
+### Inclusiveness
+
+AI systems should empower everyone and engage people. AI should bring benefits to all parts of society, regardless of physical ability, gender, sexual orientation, ethnicity, or other factors.
+
+One way to optimize for inclusiveness is to ensure that the design, development, and testing of your application includes input from as diverse a group of people as possible.
+
+### Transparency
+
+AI systems should be understandable. Users should be made fully aware of the purpose of the system, how it works, and what limitations may be expected.
+
+For example, when an AI system is based on a machine learning model, you should generally make users aware of factors that may affect the accuracy of its predictions, such as the number of cases used to train the model, or the specific features that have the most influence over its predictions. You should also share information about the confidence score for predictions.
+
+When an AI application relies on personal data, such as a facial recognition system that takes images of people to recognize them; you should make it clear to the user how their data is used and retained, and who has access to it.
+
+### Accountability
+
+People should be accountable for AI systems. Although many AI systems seem to operate autonomously, ultimately it's the responsibility of the developers who trained and validated the models they use, and defined the logic that bases decisions on model predictions to ensure that the overall system meets responsibility requirements. To help meet this goal, designers and developers of AI-based solution should work within a framework of governance and organizational principles that ensure the solution meets responsible and legal standards that are clearly defined.
+
+## Getting Started with Azure AI Foundry
+
+![Azure AI Foundry Workflow](https://learn.microsoft.com/en-us/azure/media/ai-foundry-workflow.png)
+*Diagram: Typical workflow for building AI solutions in Azure AI Foundry*
+
+To begin your AI development journey with Azure AI Foundry:
+
+1. **Access the Portal**: Navigate to the Azure AI Foundry portal at https://ai.azure.com
+2. **Create a Project**: Choose between Foundry or Hub-based projects based on your requirements
+3. **Select Models**: Browse and deploy the AI models that best fit your use case
+4. **Configure Resources**: Set up the necessary Azure resources and connections
+5. **Start Building**: Use the playground to test models and begin developing your AI solution
+
+Azure AI Foundry provides the comprehensive platform and tools needed to build responsible, scalable, and effective AI applications on Microsoft Azure.
