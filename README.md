@@ -224,9 +224,5 @@ The distance between vectors can be calculated by measuring the cosine of the an
 
 By representing words and their meanings with vectors, you can extract relevant context from your data source even when your data is stored in different formats (text or image) and languages.
 
-When you want to be able to use vector search to search your data, you need to create embeddings when creating your search index. To create embeddings for your search index, you can use an Azure OpenAI embedding model available in Azure AI Foundry.
-
-**Create a generative AI app that uses your own data:**  
-https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/04-Use-own-data.html
 
 
