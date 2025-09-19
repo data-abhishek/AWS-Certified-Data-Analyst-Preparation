@@ -214,4 +214,103 @@ The distance between vectors can be calculated by measuring the cosine of the an
 By representing words and their meanings with vectors, you can extract relevant context from your data source even when your data is stored in different formats (text or image) and languages.
 
 
+## Frequently Asked Questions (FAQs)
+
+### General AI and Azure AI
+
+**Q: What is the difference between traditional AI and Generative AI?**
+A: Traditional AI typically performs specific tasks like classification or prediction based on existing data patterns. Generative AI creates new, original content (text, images, code) from natural language prompts, making it more versatile for creative and content generation tasks.
+
+**Q: What is Azure AI Foundry and how does it help developers?**
+A: Azure AI Foundry is a unified platform for building, evaluating, deploying, and managing AI solutions on Azure. It provides integrated tools, model hosting, and services that allow developers to add AI features without building everything from scratch.
+
+**Q: Which Azure AI service should I use for my specific use case?**
+A: It depends on your needs:
+- **Azure OpenAI**: For chat, content generation, and RAG applications
+- **Azure AI Vision**: For image analysis and computer vision tasks
+- **Azure AI Speech**: For voice assistants and speech processing
+- **Azure AI Language**: For text analytics and document processing
+- **Azure AI Search**: For enterprise search and RAG grounding
+
+### Model Selection and Deployment
+
+**Q: How do I choose between different language models like GPT-4, Mistral Large, or reasoning models?**
+A: Consider these factors:
+- **Task complexity**: Use reasoning models (DeepSeek-R1, o1) for complex math, coding, science tasks
+- **Modality needs**: Choose multi-modal models (GPT-4o, Phi3-vision) if you need image processing
+- **Performance requirements**: GPT-4 and Mistral Large for high-quality text generation
+- **Cost considerations**: Smaller models may be sufficient for simpler tasks
+
+**Q: What's the difference between serverless endpoints and managed deployment?**
+A: Serverless endpoints automatically scale based on demand and you pay per use, making them ideal for variable workloads. Managed deployment gives you more control over infrastructure but requires you to manage scaling and availability.
+
+**Q: When should I fine-tune a model vs. using RAG?**
+A: 
+- **Fine-tuning**: When you need the model to learn specific writing styles, formats, or domain-specific language patterns
+- **RAG**: When you need to ground responses in current, factual data or when your knowledge base frequently updates
+
+### Prompt Engineering and Optimization
+
+**Q: What are the most effective prompt engineering techniques?**
+A: Key techniques include:
+- **Template specification**: Provide clear format structures for responses
+- **Context addition**: Include relevant background information
+- **Question refinement**: Ask the model to suggest better ways to phrase queries
+- **Role assignment**: Give the model a specific role (e.g., "You're a helpful AI assistant for sports reporters")
+
+**Q: How can I improve the accuracy of my AI responses?**
+A: Use these strategies:
+- **RAG implementation**: Ground responses in relevant data sources
+- **Prompt engineering**: Provide clear context and examples
+- **Model fine-tuning**: Train on domain-specific examples
+- **Response validation**: Implement confidence thresholds and fallback logic
+
+### RAG and Data Integration
+
+**Q: What is RAG and when should I use it?**
+A: RAG (Retrieval Augmented Generation) retrieves relevant information from your data sources to ground AI responses in factual context. Use RAG when you need responses based on specific knowledge domains or current information not in the model's training data.
+
+**Q: How do vector embeddings improve search accuracy?**
+A: Vector embeddings represent text as mathematical vectors that capture semantic meaning. This allows the system to find semantically related content even when different words are used, improving search relevance compared to traditional text-based search.
+
+**Q: What's the difference between text-based and vector-based search indexes?**
+A: 
+- **Text-based indexes**: Match exact keywords and phrases
+- **Vector-based indexes**: Understand semantic meaning and context, finding related content even with different terminology
+
+### Development Lifecycle
+
+**Q: What are the key stages in developing an LLM application?**
+A: The four main stages are:
+1. **Initialization**: Define objectives and design the solution
+2. **Experimentation**: Develop and test flows with sample data
+3. **Evaluation and refinement**: Test with larger datasets and optimize
+4. **Production**: Deploy, monitor, and continuously improve
+
+**Q: How should I approach testing my LLM application?**
+A: Follow this approach:
+- Start with a small, diverse sample dataset
+- Test iteratively during experimentation
+- Use larger datasets for evaluation
+- Always test smaller datasets first before scaling up
+- Monitor performance in production with user feedback
+
+### Responsible AI
+
+**Q: What are the main principles of Responsible AI?**
+A: The six core principles are:
+- **Fairness**: Avoid bias and ensure equitable outcomes
+- **Reliability & Safety**: Ensure consistent, bounded behavior
+- **Privacy & Security**: Protect user data and content
+- **Inclusiveness**: Design for all users and use cases
+- **Transparency**: Explain system purpose and limitations
+- **Accountability**: Maintain human oversight and governance
+
+**Q: How can I ensure my AI application is fair and unbiased?**
+A: Implement these practices:
+- Curate representative, diverse training data
+- Test across different demographic segments
+- Use bias mitigation techniques
+- Regular auditing and monitoring
+- Diverse user testing and feedback collection
 
