@@ -61,19 +61,20 @@ Beyond text-based AI, some models are multi-modal, meaning they can process imag
 If your use case involves generating images, tools like DALL·E 3 and Stability AI can create realistic visuals from text prompts. Image generation models are great for designing marketing materials, illustrations, or digital art.
 
 ### How do I select the best model for my use case?
-To select the best language model for you use case, you need to decide on what criteria you're using to filter the models. The criteria are the necessary characteristics you identify for a model. Four characteristics you can consider are:
+To select the best language model for your use case, you need to decide on what criteria you're using to filter the models. The criteria are the necessary characteristics you identify for a model. Four characteristics you can consider are:
 
-Task type: What type of task do you need the model to perform? Does it include the understanding of only text, or also audio, or video, or multiple modalities?
-Precision: Is the base model good enough or do you need a fine-tuned model that is trained on a specific skill or dataset?
-Openness: Do you want to be able to fine-tune the model yourself?
-Deployment: Do you want to deploy the model locally, on a serverless endpoint, or do you want to manage the deployment infrastructure?
+- **Task type**: What type of task do you need the model to perform? Does it include the understanding of only text, or also audio, or video, or multiple modalities?
+- **Precision**: Is the base model good enough or do you need a fine-tuned model that is trained on a specific skill or dataset?
+- **Openness**: Do you want to be able to fine-tune the model yourself?
+- **Deployment**: Do you want to deploy the model locally, on a serverless endpoint, or do you want to manage the deployment infrastructure?
 
 ### Optimize model performance
 After you deploy your model to an endpoint, you can start interacting with it to see how it works. Let's explore how you can use prompt engineering techniques to optimize your model's performance.
 
 #### Ask for better question suggestions
 When you want the model to help refine your question, you can ask it to suggest better ways to phrase your query. You can also ask it to provide extra context.
-When you encourage the model to suggest clarifications or extra details can help you ask the right questions and achieve better, more accurate answers in fewer interactions
+
+When you encourage the model to suggest clarifications or extra details, it can help you ask the right questions and achieve better, more accurate answers in fewer interactions.
 
 #### Specify the desired format for responses
 When you want the model to generate output in a specific format, you can provide a template or structure in your prompt.
@@ -95,11 +96,12 @@ For example, if you're planning a trip, you can provide the model with more cont
 
 Prompt engineering can be an effective way to optimize model responses, but in some cases it may not provide sufficient context or guidance to always meet your exact needs. As a developer, you can consider the following additional optimization strategies to improve the relevance of your generative AI application's responses:
 
-Retrieval Augmented Generation (RAG): A technique that involves using a data source to provide grounding context to prompts. RAG can be a useful approach when you need the model to answer questions based on a specific knowledge domain or when you need the model to consider information related to events that occurred after the training data on which the model is based.
-Fine-tuning: A technique that involves extending the training of a foundation model by providing example prompts and responses that reflect the desired output format and style.
+- **Retrieval Augmented Generation (RAG)**: A technique that involves using a data source to provide grounding context to prompts. RAG can be a useful approach when you need the model to answer questions based on a specific knowledge domain or when you need the model to consider information related to events that occurred after the training data on which the model is based.
+
+- **Fine-tuning**: A technique that involves extending the training of a foundation model by providing example prompts and responses that reflect the desired output format and style.
 
 ### Hands On Lab
-Choose and deploy a language model:
+**Choose and deploy a language model:**  
 https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/02-Explore-model-catalog.html
 
 ## Get started with prompt flow to develop language model apps in the Azure AI Foundry
@@ -109,12 +111,10 @@ Before understanding how to work with prompt flow, let's explore the development
 
 The lifecycle consists of the following stages:
 
-Diagram of the four stages of the development lifecycle.
-
-Initialization: Define the use case and design the solution.
-Experimentation: Develop a flow and test with a small dataset.
-Evaluation and refinement: Assess the flow with a larger dataset.
-Production: Deploy and monitor the flow and application.
+1. **Initialization**: Define the use case and design the solution.
+2. **Experimentation**: Develop a flow and test with a small dataset.
+3. **Evaluation and refinement**: Assess the flow with a larger dataset.
+4. **Production**: Deploy and monitor the flow and application.
 During both evaluation and refinement, and production, you might find that your solution needs to be improved. You can revert back to experimentation during which you develop your flow continuously, until you're satisfied with the results.
 
 Let's explore each of these phases in more detail.
@@ -124,12 +124,10 @@ Imagine you want to design and develop an LLM application to classify news artic
 
 In other words, during initialization you:
 
-Diagram of the four steps during initialization.
-
-Define the objective
-Collect a sample dataset
-Build a basic prompt
-Design the flow
+1. **Define the objective**
+2. **Collect a sample dataset**
+3. **Build a basic prompt**
+4. **Design the flow**
 To design, develop, and test an LLM application, you need a sample dataset that serves as the input. A sample dataset is a small representative subset of the data you eventually expect to parse as input to your LLM application.
 
 When collecting or creating the sample dataset, you should ensure diversity in the data to cover various scenarios and edge cases. You should also remove any privacy sensitive information from the dataset to avoid any vulnerabilities.
@@ -137,9 +135,12 @@ When collecting or creating the sample dataset, you should ensure diversity in t
 #### Experimentation
 You collected a sample dataset of news articles, and decided on which categories you want the articles to be classified into. You designed a flow that takes a news article as input, and uses an LLM to classify the article. To test whether your flow generates the expected output, you run it against your sample dataset.
 
-Diagram of the four steps during experimentation.
+The experimentation phase is an iterative process during which you:
 
-The experimentation phase is an iterative process during which you (1) run the flow against a sample dataset. You then (2) evaluate the prompt's performance. If you're (3) satisfied with the result, you can move on to evaluation and refinement. If you think there's room for improvement, you can (4) modify the flow by changing the prompt or flow itself.
+1. **Run the flow** against a sample dataset
+2. **Evaluate the prompt's performance**
+3. **Check satisfaction** with the result - if satisfied, move on to evaluation and refinement
+4. **Modify the flow** by changing the prompt or flow itself if improvement is needed
 
 #### Evaluation and refinement
 When you're satisfied with the output of the flow that classifies news articles, based on the sample dataset, you can assess the flow's performance against a larger dataset.
@@ -153,15 +154,13 @@ Once your LLM application appears to be robust and reliable in handling various 
 #### Production
 Finally, your news article classification application is ready for production.
 
-Diagram of the three steps during production.
-
 During production, you:
 
-Optimize the flow that classifies incoming articles for efficiency and effectiveness.
-Deploy your flow to an endpoint. When you call the endpoint, the flow is triggered to run and the desired output is generated.
-Monitor the performance of your solution by collecting usage data and end-user feedback. By understanding how the application performs, you can improve the flow whenever necessary.
+1. **Optimize the flow** that classifies incoming articles for efficiency and effectiveness
+2. **Deploy your flow** to an endpoint. When you call the endpoint, the flow is triggered to run and the desired output is generated
+3. **Monitor the performance** of your solution by collecting usage data and end-user feedback. By understanding how the application performs, you can improve the flow whenever necessary
 
-Use a prompt flow to manage conversation in a chat app:
+**Use a prompt flow to manage conversation in a chat app:**  
 https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/03-Use-prompt-flow-chat.html
 
 ## Develop a RAG-based solution with your own data using Azure AI Foundry
@@ -191,11 +190,9 @@ Though language models are trained on a vast amount of data, they may not have a
 #### Understanding RAG
 RAG is a technique that you can use to ground a language model. In other words, it's a process for retrieving information that is relevant to the user's initial prompt. In general terms, the RAG pattern incorporates the following steps:
 
-Diagram of the retrieval augmented generation pattern.
-
-Retrieve grounding data based on the initial user-entered prompt.
-Augment the prompt with grounding data.
-Use a language model to generate a grounded response.
+1. **Retrieve grounding data** based on the initial user-entered prompt
+2. **Augment the prompt** with grounding data
+3. **Use a language model** to generate a grounded response
 By retrieving context from a specified data source, you ensure that the language model uses relevant information when responding, instead of relying on its training data.
 
 Using RAG is a powerful and easy-to-use technique for many cases in which you want to ground your language model and improve the factual accuracy of your generative AI app's responses.
@@ -214,8 +211,9 @@ An embedding is a special format of data representation that a search engine can
 
 For example, imagine you have two documents with the following contents:
 
-"The children played joyfully in the park."
-"Kids happily ran around the playground."
+- *"The children played joyfully in the park."*
+- *"Kids happily ran around the playground."*
+
 These two documents contain texts that are semantically related, even though different words are used. By creating vector embeddings for the text in the documents, the relation between the words in the text can be mathematically calculated.
 
 Imagine the keywords being extracted from the document and plotted as a vector in a multidimensional space:
@@ -228,7 +226,7 @@ By representing words and their meanings with vectors, you can extract relevant 
 
 When you want to be able to use vector search to search your data, you need to create embeddings when creating your search index. To create embeddings for your search index, you can use an Azure OpenAI embedding model available in Azure AI Foundry.
 
-Create a generative AI app that uses your own data
+**Create a generative AI app that uses your own data:**  
 https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/04-Use-own-data.html
 
 
