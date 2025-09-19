@@ -1,179 +1,246 @@
-# Develop Generative AI Apps in Azure
+# AI Solutions on Azure
 
-![Azure AI Overview](https://learn.microsoft.com/en-us/azure/media/ai-services-overview.png)
-*Figure: Overview of Azure AI services and platforms*
+## What is AI?
+Artificial Intelligence (AI) enables software to perform tasks that appear to require human cognition: understanding input (text, speech, images, video), reasoning over data, and generating or selecting appropriate outputs.
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Azure AI Services](#azure-ai-services)
-3. [Azure AI Foundry](#azure-ai-foundry)
-4. [Azure AI Foundry Projects](#azure-ai-foundry-projects)
-5. [Responsible AI](#responsible-ai)
+Modern AI solutions are typically built on machine learning and foundation models that learn patterns and semantic relationships from large datasets.
 
-## Introduction
+## Common AI Capabilities
 
-The growth in the use of artificial intelligence (AI) in general, and *generative* AI in particular means that developers are increasingly required to create comprehensive AI solutions. These solutions need to combine machine learning models, AI services, prompt engineering solutions, and custom code.
-
-Microsoft Azure provides multiple services that you can use to create AI solutions. However, before embarking on an AI application development project, it's useful to consider the available options for services, tools, and frameworks as well as some principles and practices that can help you succeed.
-
-This module explores some of the key considerations for planning an AI development project, and introduces **Azure AI Foundry**; a comprehensive platform for AI development on Microsoft Azure.
+| Capability | Description | Example Use Case |
+|-----------|-------------|------------------|
+| Generative AI | Creates original content from natural language prompts. | Auto-generate property listing descriptions. |
+| Agents | Autonomously decide and perform multi-step tasks. | Calendar assistant arranging transport. |
+| Computer Vision | Interprets images and video streams. | Identifies items at automated retail checkout. |
+| Speech | Speech-to-text and text-to-speech. | Voice-driven Q&A in an app. |
+| Natural Language Processing | Analyzes, summarizes, classifies, translates text. | Sentiment analysis of social posts. |
+| Information Extraction | Pulls structured data from documents, images, audio. | Extracts totals and line items from receipts. |
+| Decision Support | Predicts outcomes from historical patterns. | Forecasts real estate pricing trends. |
 
 ## Azure AI Services
+Azure provides managed APIs and model hosting so you can add AI features without building everything from scratch.
 
-![Azure AI Services Architecture](https://learn.microsoft.com/en-us/azure/media/ai-services-architecture.png)
-*Diagram: High-level architecture of Azure AI services*
-
-Microsoft Azure provides a wide range of cloud services that you can use to develop, deploy, and manage an AI solution. The most obvious starting point for considering AI development on Azure is Azure AI services; a set of out-of-the-box prebuilt APIs and models that you can integrate into your applications. The following table lists some commonly used Azure AI services (for a full list of all available Azure AI services, see Available Azure AI services).
-
-| Service | Description |
-|---------|-------------|
-| **Azure OpenAI** | Azure OpenAI in Foundry Models provides access to OpenAI generative AI models including the GPT family of large and small language models and DALL-E image-generation models within a scalable and securable cloud service on Azure. |
-| **Azure AI Vision** | The Azure AI Vision service provides a set of models and APIs that you can use to implement common computer vision functionality in an application. With the AI Vision service, you can detect common objects in images, generate captions, descriptions, and tags based on image contents, and read text in images. |
-| **Azure AI Speech** | The Azure AI Speech service provides APIs that you can use to implement *text to speech* and *speech to text* transformation, as well as specialized speech-based capabilities like speaker recognition and translation. |
-| **Azure AI Language** | The Azure AI Language service provides models and APIs that you can use to analyze natural language text and perform tasks such as entity extraction, sentiment analysis, and summarization. The AI Language service also provides functionality to help you build conversational language models and question answering solutions. |
-| **Azure AI Foundry Content Safety** | Azure AI Foundry Content Safety provides developers with access to advanced algorithms for processing images and text and flagging content that is potentially offensive, risky, or otherwise undesirable. |
-| **Azure AI Translator** | The Azure AI Translator service uses state-of-the-art language models to translate text between a large number of languages. |
-| **Azure AI Face** | The Azure AI Face service is a specialist computer vision implementation that can detect, analyze, and recognize human faces. Because of the potential risks associated with personal identification and misuse of this capability, access to some features of the AI Face service are restricted to approved customers. |
-| **Azure AI Custom Vision** | The Azure AI Custom Vision service enables you to train and use custom computer vision models for image classification and object detection. |
-| **Azure AI Document Intelligence** | With Azure AI Document Intelligence, you can use pre-built or custom models to extract fields from complex documents such as invoices, receipts, and forms. |
-| **Azure AI Content Understanding** | The Azure AI Content Understanding service provides multi-modal content analysis capabilities that enable you to build models to extract data from forms and documents, images, videos, and audio streams. |
-| **Azure AI Search** | The Azure AI Search service uses a pipeline of AI skills based on other Azure AI Services and custom code to extract information from content and create a searchable index. AI Search is commonly used to create vector indexes for data that can then be used to *ground* prompts submitted to generative AI language models, such as those provided in Azure OpenAI. |
+| Service | Core Purpose | Typical Scenarios |
+|---------|--------------|-------------------|
+| Azure OpenAI | Access to GPT family, fine-tuning, embeddings, image generation (DALL·E). | Chat, content generation, code assist, RAG. |
+| Azure AI Vision | General image/video analysis (objects, captions, OCR). | Image tagging, content moderation, retail vision. |
+| Azure AI Speech | Speech-to-text, text-to-speech, translation, speaker features. | Voice assistants, call analytics, accessibility. |
+| Azure AI Language | Text analytics, entities, sentiment, summarization, Q&A, conversational language. | Knowledge bots, feedback mining, document summarization. |
+| Azure AI Content Safety | Detects unsafe / policy-sensitive text & images. | Moderating user-generated content. |
+| Azure AI Translator | Multi-language text translation. | Real-time localization, multilingual chat. |
+| Azure AI Face | Face detection & analysis (restricted advanced features). | Access control, anonymized analytics. |
+| Azure AI Custom Vision | Train custom image classifiers / object detectors. | Domain-specific product or defect recognition. |
+| Azure AI Document Intelligence | Structured field extraction from forms & documents. | Invoice/receipt automation, form ingestion. |
+| Azure AI Content Understanding | Multimodal extraction across documents, images, audio, video. | Unified content pipelines, governance. |
+| Azure AI Search | Cognitive & vector search over content using skillsets + semantic ranking. | RAG grounding, enterprise search portals. |
 
 ## Azure AI Foundry
+Azure AI Foundry is a unified platform for building, evaluating, deploying, and managing AI solutions on Azure.
 
-Azure AI Foundry is a platform for AI development on Microsoft Azure. While you *can* provision individual Azure AI services resources and build applications that consume them without it, the project organization, resource management, and AI development capabilities of Azure AI Foundry makes it the recommended way to build all but the most simple solutions.
-
-Azure AI Foundry provides the *Azure AI Foundry portal*, a web-based visual interface for working with AI projects. It also provides the *Azure AI Foundry SDK*, which you can use to build AI solutions programmatically.
-
-![Azure AI Foundry Platform Diagram](https://learn.microsoft.com/en-us/azure/media/ai-foundry-platform-diagram.png)
-*Diagram: Azure AI Foundry platform components*
-
-### Key Features of Azure AI Foundry
-
-![Azure AI Foundry Portal Features](https://learn.microsoft.com/en-us/azure/media/ai-foundry-portal-features.png)
-*Diagram: Features of the Azure AI Foundry portal*
-
-**Azure AI Foundry Portal**
-The Azure AI Foundry portal provides a comprehensive web-based interface for managing AI projects, deploying models, and building AI applications. The portal includes:
-- Project management and collaboration tools
-- Model deployment and testing capabilities
-- Built-in playgrounds for experimenting with AI models
-- Resource management and monitoring tools
-
-**Azure AI Foundry SDK**
-The SDK enables programmatic access to Azure AI Foundry capabilities, allowing developers to:
-- Build AI solutions using code
-- Integrate AI capabilities into existing applications
-- Automate deployment and management processes
-- Create custom AI workflows and pipelines
-
-## Azure AI Foundry Projects
-
-![Foundry vs Hub-based Projects Diagram](https://learn.microsoft.com/en-us/azure/media/foundry-vs-hub-diagram.png)
-*Diagram: Comparison of Foundry and Hub-based project structures*
-
-In Azure AI Foundry, you manage the resource connections, data, code, and other elements of the AI solution in *projects*. There are two kinds of project:
-
-### Foundry Projects
-
-*Foundry projects* are associated with an **Azure AI Foundry** resource in an Azure subscription. Foundry projects provide support for Azure AI Foundry models (including OpenAI models), Azure AI Foundry Agent Service, Azure AI services, and tools for evaluation and responsible AI development.
-
-An Azure AI Foundry resource supports the most common AI development tasks to develop generative AI chat apps and agents. In most cases, using a Foundry project provides the right level of resource centralization and capabilities with a minimal amount of administrative resource management. You can use Azure AI Foundry portal to work in projects that are based in Azure AI Foundry resources, making it easy to add connected resources and manage model and agent deployments.
-
-**Key Features of Foundry Projects:**
-- Access to Azure OpenAI models and other AI Foundry models
-- Integration with Azure AI Foundry Agent Service
-- Built-in evaluation and responsible AI tools
-- Simplified resource management
-- Streamlined deployment processes
-
-### Hub-based Projects
-
-*Hub-based projects* are associated with an **Azure AI hub** resource in an Azure subscription. Hub-based projects include an Azure AI Foundry resource, as well as managed compute, support for Prompt Flow development, and connected **Azure storage** and **Azure key vault** resources for secure data storage.
-
-Azure AI hub resources support advanced AI development scenarios, like developing Prompt Flow based applications or fine-tuning models. You can also use Azure AI hub resources in both Azure AI Foundry portal and Azure Machine learning portal, making it easier to work on collaborative projects that involve data scientists and machine learning specialists as well as developers and AI software engineers.
-
-**Key Features of Hub-based Projects:**
-- Advanced AI development capabilities
-- Prompt Flow development support
-- Model fine-tuning capabilities
-- Managed compute resources
-- Secure data storage with Azure Storage and Key Vault
-- Integration with Azure Machine Learning
-- Support for collaborative development teams
-
-### Choosing the Right Project Type
-
-**Choose Foundry Projects when:**
-- Building generative AI chat applications or agents
-- Working on straightforward AI development tasks
-- Preferring minimal administrative overhead
-- Focusing on Azure OpenAI models and standard AI services
-
-**Choose Hub-based Projects when:**
-- Developing complex AI solutions requiring custom workflows
-- Need for Prompt Flow development
-- Requiring model fine-tuning capabilities
-- Working with collaborative teams including data scientists
-- Need advanced compute and storage management
-- Building enterprise-grade AI applications with enhanced security
 
 ## Responsible AI
+Building AI requires mitigating risk and promoting beneficial impact.
 
-![Responsible AI Principles Diagram](https://learn.microsoft.com/en-us/azure/media/responsible-ai-diagram.png)
-*Diagram: Microsoft Responsible AI principles*
+### Core Principles
+| Principle | Goal | Key Engineering Actions |
+|-----------|------|--------------------------|
+| Fairness | Avoid unjust bias / disparate impact | Curate representative data; slice metrics by demographic segments; bias mitigation techniques |
+| Reliability & Safety | Consistent, bounded behavior | Robust testing, fallback logic, confidence thresholds, red-team scenarios |
+| Privacy & Security | Protect user data & content | Data minimization, encryption at rest/in transit, differential access, secure secret management |
+| Inclusiveness | Benefit all users | Accessible UX, diverse user testing, language and modality support |
+| Transparency | Explain system purpose & limits | Disclose model use, surface confidence, document data lineage & evaluation results |
+| Accountability | Human responsibility & governance | Clear ownership, audit trails, incident response runbooks, policy & compliance reviews |
 
-It's important for software engineers to consider the impact of their software on users, and society in general; including considerations for its responsible use. When the application is imbued with artificial intelligence, these considerations are particularly important due to the nature of how AI systems work and inform decisions; often based on probabilistic models, which are in turn dependent on the data with which they were trained.
+## Choose and deploy models from the model catalog in Azure AI Foundry portal
 
-The human-like nature of AI solutions is a significant benefit in making applications user-friendly, but it can also lead users to place a great deal of trust in the application's ability to make correct decisions. The potential for harm to individuals or groups through incorrect predictions or misuse of AI capabilities is a major concern, and software engineers building AI-enabled solutions should apply due consideration to mitigate risks and ensure fairness, reliability, and adequate protection from harm or discrimination.
+### Focus on a modality, task, or tool
+Language models like GPT-4 and Mistral Large are also known as chat completion models, designed to generate coherent and contextually appropriate text-based responses. When you need higher levels of performance in complex tasks like math, coding, science, strategy, and logistics, you can also use reasoning models like DeepSeek-R1 and o1.
 
-Let's discuss some core principles for responsible AI that have been adopted at Microsoft.
+Beyond text-based AI, some models are multi-modal, meaning they can process images, audio, and other data types alongside text. Models like GPT-4o and Phi3-vision are capable of analyzing and generating both text and images. Multi-modal models are useful when your application needs to process and understand images, such as in computer vision or document analysis. Or when you want to build an AI app that interacts with visual content, such as a digital tutor explaining images or charts.
 
-### Fairness
+If your use case involves generating images, tools like DALL·E 3 and Stability AI can create realistic visuals from text prompts. Image generation models are great for designing marketing materials, illustrations, or digital art.
 
-AI systems should treat all people fairly. For example, suppose you create a machine learning model to support a loan approval application for a bank. The model should make predictions of whether or not the loan should be approved without incorporating any bias based on gender, ethnicity, or other factors that might result in an unfair advantage or disadvantage to specific groups of applicants.
+### How do I select the best model for my use case?
+To select the best language model for you use case, you need to decide on what criteria you're using to filter the models. The criteria are the necessary characteristics you identify for a model. Four characteristics you can consider are:
 
-Fairness of machine learned systems is a highly active area of ongoing research, and some software solutions exist for evaluating, quantifying, and mitigating unfairness in machine learned models. However, tooling alone isn't sufficient to ensure fairness. Consider fairness from the beginning of the application development process; carefully reviewing training data to ensure it's representative of all potentially affected subjects, and evaluating predictive performance for subsections of your user population throughout the development lifecycle.
+Task type: What type of task do you need the model to perform? Does it include the understanding of only text, or also audio, or video, or multiple modalities?
+Precision: Is the base model good enough or do you need a fine-tuned model that is trained on a specific skill or dataset?
+Openness: Do you want to be able to fine-tune the model yourself?
+Deployment: Do you want to deploy the model locally, on a serverless endpoint, or do you want to manage the deployment infrastructure?
 
-### Reliability and Safety
+### Optimize model performance
+Completed
+100 XP
+8 minutes
+After you deploy your model to an endpoint, you can start interacting with it to see how it works. Let's explore how you can use prompt engineering techniques to optimize your model's performance.
 
-AI systems should perform reliably and safely. For example, consider an AI-based software system for an autonomous vehicle; or a machine learning model that diagnoses patient symptoms and recommends prescriptions. Unreliability in these kinds of system can result in substantial risk to human life.
+#### Ask for better question suggestions
+When you want the model to help refine your question, you can ask it to suggest better ways to phrase your query. You can also ask it to provide extra context.
+When you encourage the model to suggest clarifications or extra details can help you ask the right questions and achieve better, more accurate answers in fewer interactions
 
-As with any software, AI-based software application development must be subjected to rigorous testing and deployment management processes to ensure that they work as expected before release. Additionally, software engineers need to take into account the probabilistic nature of machine learning models, and apply appropriate thresholds when evaluating confidence scores for predictions.
+#### Specify the desired format for responses
+When you want the model to generate output in a specific format, you can provide a template or structure in your prompt.
 
-### Privacy and Security
+For example, if you're a sports reporting composing a historical article, you can request that the model follow a specific template, which includes headings, bullet points, and data breakdowns.
 
-AI systems should be secure and respect privacy. The machine learning models on which AI systems are based rely on large volumes of data, which may contain personal details that must be kept private. Even after models are trained and the system is in production, they use new data to make predictions or take action that may be subject to privacy or security concerns; so appropriate safeguards to protect data and customer content must be implemented.
+| | No template specified | With template specified |
+|---|---|---|
+| System prompt | You're a helpful AI assistant. | You're a helpful AI assistant for sports reporters. |
+| User prompt | What happened in the 2018 Soccer World Cup final? | What happened in the 2018 Soccer World Cup final? Format the result to show the match date, location, and the two teams competing. Then the final score, and finally any notable events that occurred during the match. |
+| Model response | The 2018 FIFA World Cup final took place on July 15, 2018, at the Luzhniki Stadium in Moscow, Russia. France faced Croatia in the match. France emerged victorious with a 4-2 win. The goals for France were scored by Mario Mandzukic (own goal), Antoine Griezmann (penalty), Paul Pogba, and Kylian Mbappé. Croatia's goals were scored by Ivan Perišić and Mandzukic. Kylian Mbappé, at just 19 years old, became the second youngest player to score in a World Cup final, after Pelé. This victory marked France's second World Cup title, their first being in 1998. | Match Date: July 15, 2018<br>Location: Luzhniki Stadium, Moscow, Russia<br>Teams Competing: France vs. Croatia<br>Final Score: France 4, Croatia 2<br><br>Notable Events:<br>First Half: France took an early lead in the 18th minute with an own goal by Mario Mandžukić after a cross from Antoine Griezmann. Croatia equalized in the 28th minute with a header from Ivan Perišić, who had just come on as a substitute. Just before halftime, in the 44th minute, Paul Pogba scored from a free kick to put France back in the lead.<br>Second Half: The game saw a dramatic increase in intensity after the break. In the 68th minute, Kylian Mbappé scored his first World Cup goal, bringing the score to 3-1 in favor of France. Croatia managed to score again in the 69th minute when Mandžukić headed in a cross from Perišić, reducing the deficit to 3-2.<br>Final Moments: In the 81st minute, a controversial penalty was awarded to France after a handball by Croatian defender Dejan Lovren. Griezmann converted the penalty, sealing the victory for France with a 4-2 scoreline.<br>Additional Context: This match was notable for being the youngest ever World Cup final in terms of average age, featuring players like Mbappé and N'Golo Kanté. France's victory marked their second World Cup title, having previously won in 1998. Croatia reached the final for the first time in their history, finishing as runners-up. |
 
-### Inclusiveness
+#### Add context
+When you want the model to focus on specific topics, you can specify the context to consider. You can also tell the model to ignore irrelevant information.
 
-AI systems should empower everyone and engage people. AI should bring benefits to all parts of society, regardless of physical ability, gender, sexual orientation, ethnicity, or other factors.
+For example, if you're planning a trip, you can provide the model with more context to help improve the relevance of its response.
 
-One way to optimize for inclusiveness is to ensure that the design, development, and testing of your application includes input from as diverse a group of people as possible.
+#### Apply model optimization strategies
 
-### Transparency
+Prompt engineering can be an effective way to optimize model responses, but in some cases it may not provide sufficient context or guidance to always meet your exact needs. As a developer, you can consider the following additional optimization strategies to improve the relevance of your generative AI application's responses:
 
-AI systems should be understandable. Users should be made fully aware of the purpose of the system, how it works, and what limitations may be expected.
+Retrieval Augmented Generation (RAG): A technique that involves using a data source to provide grounding context to prompts. RAG can be a useful approach when you need the model to answer questions based on a specific knowledge domain or when you need the model to consider information related to events that occurred after the training data on which the model is based.
+Fine-tuning: A technique that involves extending the training of a foundation model by providing example prompts and responses that reflect the desired output format and style.
 
-For example, when an AI system is based on a machine learning model, you should generally make users aware of factors that may affect the accuracy of its predictions, such as the number of cases used to train the model, or the specific features that have the most influence over its predictions. You should also share information about the confidence score for predictions.
+### Hands On Lab
+Choose and deploy a language model:
+https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/02-Explore-model-catalog.html
 
-When an AI application relies on personal data, such as a facial recognition system that takes images of people to recognize them; you should make it clear to the user how their data is used and retained, and who has access to it.
+## Get started with prompt flow to develop language model apps in the Azure AI Foundry
 
-### Accountability
+### Understand the development lifecycle of a large language model (LLM) app
+Completed
+100 XP
+8 minutes
+Before understanding how to work with prompt flow, let's explore the development lifecycle of a Large Language Model (LLM) application.
 
-People should be accountable for AI systems. Although many AI systems seem to operate autonomously, ultimately it's the responsibility of the developers who trained and validated the models they use, and defined the logic that bases decisions on model predictions to ensure that the overall system meets responsibility requirements. To help meet this goal, designers and developers of AI-based solution should work within a framework of governance and organizational principles that ensure the solution meets responsible and legal standards that are clearly defined.
+The lifecycle consists of the following stages:
 
-## Getting Started with Azure AI Foundry
+Diagram of the four stages of the development lifecycle.
 
-![Azure AI Foundry Workflow](https://learn.microsoft.com/en-us/azure/media/ai-foundry-workflow.png)
-*Diagram: Typical workflow for building AI solutions in Azure AI Foundry*
+Initialization: Define the use case and design the solution.
+Experimentation: Develop a flow and test with a small dataset.
+Evaluation and refinement: Assess the flow with a larger dataset.
+Production: Deploy and monitor the flow and application.
+During both evaluation and refinement, and production, you might find that your solution needs to be improved. You can revert back to experimentation during which you develop your flow continuously, until you're satisfied with the results.
 
-To begin your AI development journey with Azure AI Foundry:
+Let's explore each of these phases in more detail.
 
-1. **Access the Portal**: Navigate to the Azure AI Foundry portal at https://ai.azure.com
-2. **Create a Project**: Choose between Foundry or Hub-based projects based on your requirements
-3. **Select Models**: Browse and deploy the AI models that best fit your use case
-4. **Configure Resources**: Set up the necessary Azure resources and connections
-5. **Start Building**: Use the playground to test models and begin developing your AI solution
+#### Initialization
+Imagine you want to design and develop an LLM application to classify news articles. Before you start creating anything, you need to define what categories you want as output. You need to understand what a typical news article looks like, how you present the article as input to your application, and how the application generates the desired output.
 
-Azure AI Foundry provides the comprehensive platform and tools needed to build responsible, scalable, and effective AI applications on Microsoft Azure.
+In other words, during initialization you:
+
+Diagram of the four steps during initialization.
+
+Define the objective
+Collect a sample dataset
+Build a basic prompt
+Design the flow
+To design, develop, and test an LLM application, you need a sample dataset that serves as the input. A sample dataset is a small representative subset of the data you eventually expect to parse as input to your LLM application.
+
+When collecting or creating the sample dataset, you should ensure diversity in the data to cover various scenarios and edge cases. You should also remove any privacy sensitive information from the dataset to avoid any vulnerabilities.
+
+#### Experimentation
+You collected a sample dataset of news articles, and decided on which categories you want the articles to be classified into. You designed a flow that takes a news article as input, and uses an LLM to classify the article. To test whether your flow generates the expected output, you run it against your sample dataset.
+
+Diagram of the four steps during experimentation.
+
+The experimentation phase is an iterative process during which you (1) run the flow against a sample dataset. You then (2) evaluate the prompt's performance. If you're (3) satisfied with the result, you can move on to evaluation and refinement. If you think there's room for improvement, you can (4) modify the flow by changing the prompt or flow itself.
+
+#### Evaluation and refinement
+When you're satisfied with the output of the flow that classifies news articles, based on the sample dataset, you can assess the flow's performance against a larger dataset.
+
+By testing the flow on a larger dataset, you can evaluate how well the LLM application generalizes to new data. During evaluation, you can identify potential bottlenecks or areas for optimization or refinement.
+
+When you edit your flow, you should first run it against a smaller dataset before running it again against a larger dataset. Testing your flow with a smaller dataset allows you to more quickly respond to any issues.
+
+Once your LLM application appears to be robust and reliable in handling various scenarios, you can decide to move the LLM application to production.
+
+#### Production
+Finally, your news article classification application is ready for production.
+
+Diagram of the three steps during production.
+
+During production, you:
+
+Optimize the flow that classifies incoming articles for efficiency and effectiveness.
+Deploy your flow to an endpoint. When you call the endpoint, the flow is triggered to run and the desired output is generated.
+Monitor the performance of your solution by collecting usage data and end-user feedback. By understanding how the application performs, you can improve the flow whenever necessary.
+
+Use a prompt flow to manage conversation in a chat app:
+https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/03-Use-prompt-flow-chat.html
+
+## Develop a RAG-based solution with your own data using Azure AI Foundry
+Language models are growing in popularity as they create impressive coherent answers to a user's questions. Especially when a user interacts with a language model through chat, it provides an intuitive way to get the information they need.
+
+One prevalent challenge when implementing language models through chat is the so-called groundedness, which refers to whether a response is rooted, connected, or anchored in reality or a specific context. In other words, groundedness refers to whether the response of a language model is based on factual information.
+
+### Ungrounded prompts and responses
+When you use a language model to generate a response to a prompt, the only information that the model has to base the answer on comes from the data on which it was trained - which is often just a large volume of uncontextualized text from the Internet or some other source.
+
+Diagram of an ungrounded model returning an uncontextualized response.
+
+The result will likely be a grammatically coherent and logical response to the prompt, but because it isn't grounded in relevant, factual data, it's uncontextualized; and may in fact be inaccurate and include "invented" information. For example, the question "Which product should I use to do X?" might include details of a fictional product.
+
+### Grounded prompts and responses
+In contrast, you can use a data source to ground the prompt with some relevant, factual context. The prompt can then be submitted to a language model, including the grounding data, to generate a contextualized, relevant, and accurate response.
+
+Diagram of a grounded model returning a contextualized response.
+
+The data source can be any repository of relevant data. For example, you could use data from a product catalog database to ground the prompt "Which product should I use to do X?" so that the response includes relevant details of products that exist in the catalog.
+
+### Understand how to ground your language model
+Completed
+100 XP
+6 minutes
+Language models excel in generating engaging text, and are ideal as the base for agents. Agents provide users with an intuitive chat-based application to receive assistance in their work. When designing an agent for a specific use case, you want to ensure your language model is grounded and uses factual information that is relevant to what the user needs.
+
+Though language models are trained on a vast amount of data, they may not have access to the knowledge you want to make available to your users. To ensure that an agent is grounded on specific data to provide accurate and domain-specific responses, you can use Retrieval Augmented Generation (RAG).
+
+#### Understanding RAG
+RAG is a technique that you can use to ground a language model. In other words, it's a process for retrieving information that is relevant to the user's initial prompt. In general terms, the RAG pattern incorporates the following steps:
+
+Diagram of the retrieval augmented generation pattern.
+
+Retrieve grounding data based on the initial user-entered prompt.
+Augment the prompt with grounding data.
+Use a language model to generate a grounded response.
+By retrieving context from a specified data source, you ensure that the language model uses relevant information when responding, instead of relying on its training data.
+
+Using RAG is a powerful and easy-to-use technique for many cases in which you want to ground your language model and improve the factual accuracy of your generative AI app's responses.
+
+### Make your data searchable
+Completed
+100 XP
+7 minutes
+When you want to create an agent that uses your own data to generate accurate answers, you need to be able to search your data efficiently. When you build an agent with the Azure AI Foundry, you can use the integration with Azure AI Search to retrieve the relevant context in your chat flow.
+
+Azure AI Search is a retriever that you can include when building a language model application with prompt flow. Azure AI Search allows you to bring your own data, index your data, and query the index to retrieve any information you need.
+
+Diagram showing an index being queried to retrieve grounding data.
+
+#### Using a vector index
+While a text-based index will improve search efficiency, you can usually achieve a better data retrieval solution by using a vector-based index that contains embeddings that represent the text tokens in your data source.
+
+An embedding is a special format of data representation that a search engine can use to easily find the relevant information. More specifically, an embedding is a vector of floating-point numbers.
+
+For example, imagine you have two documents with the following contents:
+
+"The children played joyfully in the park."
+"Kids happily ran around the playground."
+These two documents contain texts that are semantically related, even though different words are used. By creating vector embeddings for the text in the documents, the relation between the words in the text can be mathematically calculated.
+
+Imagine the keywords being extracted from the document and plotted as a vector in a multidimensional space:
+
+Diagram of vector embeddings.
+
+The distance between vectors can be calculated by measuring the cosine of the angle between two vectors, also known as the cosine similarity. In other words, the cosine similarity computes the semantic similarity between documents and a query.
+
+By representing words and their meanings with vectors, you can extract relevant context from your data source even when your data is stored in different formats (text or image) and languages.
+
+When you want to be able to use vector search to search your data, you need to create embeddings when creating your search index. To create embeddings for your search index, you can use an Azure OpenAI embedding model available in Azure AI Foundry.
+
+Create a generative AI app that uses your own data
+https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/04-Use-own-data.html
+
+
