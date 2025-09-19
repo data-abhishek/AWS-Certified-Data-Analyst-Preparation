@@ -69,9 +69,6 @@ Openness: Do you want to be able to fine-tune the model yourself?
 Deployment: Do you want to deploy the model locally, on a serverless endpoint, or do you want to manage the deployment infrastructure?
 
 ### Optimize model performance
-Completed
-100 XP
-8 minutes
 After you deploy your model to an endpoint, you can start interacting with it to see how it works. Let's explore how you can use prompt engineering techniques to optimize your model's performance.
 
 #### Ask for better question suggestions
@@ -108,9 +105,6 @@ https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/02-Explore-mo
 ## Get started with prompt flow to develop language model apps in the Azure AI Foundry
 
 ### Understand the development lifecycle of a large language model (LLM) app
-Completed
-100 XP
-8 minutes
 Before understanding how to work with prompt flow, let's explore the development lifecycle of a Large Language Model (LLM) application.
 
 The lifecycle consists of the following stages:
@@ -190,9 +184,6 @@ Diagram of a grounded model returning a contextualized response.
 The data source can be any repository of relevant data. For example, you could use data from a product catalog database to ground the prompt "Which product should I use to do X?" so that the response includes relevant details of products that exist in the catalog.
 
 ### Understand how to ground your language model
-Completed
-100 XP
-6 minutes
 Language models excel in generating engaging text, and are ideal as the base for agents. Agents provide users with an intuitive chat-based application to receive assistance in their work. When designing an agent for a specific use case, you want to ensure your language model is grounded and uses factual information that is relevant to what the user needs.
 
 Though language models are trained on a vast amount of data, they may not have access to the knowledge you want to make available to your users. To ensure that an agent is grounded on specific data to provide accurate and domain-specific responses, you can use Retrieval Augmented Generation (RAG).
@@ -210,9 +201,6 @@ By retrieving context from a specified data source, you ensure that the language
 Using RAG is a powerful and easy-to-use technique for many cases in which you want to ground your language model and improve the factual accuracy of your generative AI app's responses.
 
 ### Make your data searchable
-Completed
-100 XP
-7 minutes
 When you want to create an agent that uses your own data to generate accurate answers, you need to be able to search your data efficiently. When you build an agent with the Azure AI Foundry, you can use the integration with Azure AI Search to retrieve the relevant context in your chat flow.
 
 Azure AI Search is a retriever that you can include when building a language model application with prompt flow. Azure AI Search allows you to bring your own data, index your data, and query the index to retrieve any information you need.
