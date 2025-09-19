@@ -160,6 +160,7 @@ During production, you:
 2. **Deploy your flow** to an endpoint. When you call the endpoint, the flow is triggered to run and the desired output is generated
 3. **Monitor the performance** of your solution by collecting usage data and end-user feedback. By understanding how the application performs, you can improve the flow whenever necessary
 
+### Hands On Lab
 **Use a prompt flow to manage conversation in a chat app:**  
 https://microsoftlearning.github.io/mslearn-ai-studio/Instructions/03-Use-prompt-flow-chat.html
 
@@ -171,16 +172,9 @@ One prevalent challenge when implementing language models through chat is the so
 ### Ungrounded prompts and responses
 When you use a language model to generate a response to a prompt, the only information that the model has to base the answer on comes from the data on which it was trained - which is often just a large volume of uncontextualized text from the Internet or some other source.
 
-Diagram of an ungrounded model returning an uncontextualized response.
-
-The result will likely be a grammatically coherent and logical response to the prompt, but because it isn't grounded in relevant, factual data, it's uncontextualized; and may in fact be inaccurate and include "invented" information. For example, the question "Which product should I use to do X?" might include details of a fictional product.
-
+The result will likely be a grammatically coherent and logical response to the prompt, but because it isn't grounded in relevant, factual data, it's uncontextualized; and may in fact be inaccurate and include "invented" information.
 ### Grounded prompts and responses
 In contrast, you can use a data source to ground the prompt with some relevant, factual context. The prompt can then be submitted to a language model, including the grounding data, to generate a contextualized, relevant, and accurate response.
-
-Diagram of a grounded model returning a contextualized response.
-
-The data source can be any repository of relevant data. For example, you could use data from a product catalog database to ground the prompt "Which product should I use to do X?" so that the response includes relevant details of products that exist in the catalog.
 
 ### Understand how to ground your language model
 Language models excel in generating engaging text, and are ideal as the base for agents. Agents provide users with an intuitive chat-based application to receive assistance in their work. When designing an agent for a specific use case, you want to ensure your language model is grounded and uses factual information that is relevant to what the user needs.
@@ -202,7 +196,6 @@ When you want to create an agent that uses your own data to generate accurate an
 
 Azure AI Search is a retriever that you can include when building a language model application with prompt flow. Azure AI Search allows you to bring your own data, index your data, and query the index to retrieve any information you need.
 
-Diagram showing an index being queried to retrieve grounding data.
 
 #### Using a vector index
 While a text-based index will improve search efficiency, you can usually achieve a better data retrieval solution by using a vector-based index that contains embeddings that represent the text tokens in your data source.
@@ -215,10 +208,6 @@ For example, imagine you have two documents with the following contents:
 - *"Kids happily ran around the playground."*
 
 These two documents contain texts that are semantically related, even though different words are used. By creating vector embeddings for the text in the documents, the relation between the words in the text can be mathematically calculated.
-
-Imagine the keywords being extracted from the document and plotted as a vector in a multidimensional space:
-
-Diagram of vector embeddings.
 
 The distance between vectors can be calculated by measuring the cosine of the angle between two vectors, also known as the cosine similarity. In other words, the cosine similarity computes the semantic similarity between documents and a query.
 
